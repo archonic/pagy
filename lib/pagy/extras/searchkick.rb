@@ -11,8 +11,10 @@ class Pagy
 
     def pagy_searchkick_get_vars(results, vars)
       # Return the merged variables to initialize the Pagy object
+      puts "======== COUNT: #{results.total_count}"
+      puts "======== PAGE: #{params[results.options[:page]]}"
       { count: results.total_count,
-        page:  params[results.options[:page]] }.merge!(vars) #||vars[:page_param]||VARS[:page_param]
+        page:  results.options[:page] }.merge!(vars) #||vars[:page_param]||VARS[:page_param]
     end
   end
 end
